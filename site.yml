@@ -1,0 +1,12 @@
+---
+# File: site.yml - Example Vault site playbook
+
+- name: Deploy Vault cluster
+  hosts: vault_instances
+  any_errors_fatal: true
+  become: true
+  become_user: root
+
+  roles:
+    - ansible-vault
+
