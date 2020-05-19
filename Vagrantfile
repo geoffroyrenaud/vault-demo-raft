@@ -3,12 +3,15 @@
 
 BOX_MEM = "512"
 BOX_CPU = 1
-BOX_NAME =  "debian/buster64"
+#BOX_NAME =  "debian/buster64"
+BOX_NAME =  "centos/7"
+
 ANSIBLE_PLAYBOOK  = "site.yml"
 
 $script = <<SCRIPT
 apt-get update
-
+apt-get upgrade
+apt-get install net-tools
 SCRIPT
 
 Vagrant.configure("2") do |config|
@@ -50,6 +53,14 @@ Vagrant.configure("2") do |config|
   config.vm.provision :ansible do |ansible|
     ansible.playbook = ANSIBLE_PLAYBOOK
     ansible.verbose = true
+    ansible.extra_vars = {
+      VAULT_LOG_LEVEL: "info",
+      VAULT_IFACE: "eth0"
+    }
+    ansible.groups = {
+      "vault_raft_servers" => ["vault[1:3]"]
+    }
+
     ansible.host_vars = {
       "vault1" => {},
       "vault2" => {},

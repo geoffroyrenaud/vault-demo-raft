@@ -2,11 +2,18 @@
 # File: site.yml - Example Vault site playbook
 
 - name: Deploy Vault cluster
-  hosts: vault_instances
+  hosts: all
   any_errors_fatal: true
   become: true
   become_user: root
 
   roles:
-    - ansible-vault
+    - role: ansible-vault
+      vault_version: 1.4.1
+      vault_tls_disable: true
+      vault_backend: "raft"
+      vault_cluster_name: "clvagrant"
+      vault_datacenter_name: "dc"
+      vault_group_name: "grpvagrant"
+      vault_raft_group_name: "grpraft"
 
