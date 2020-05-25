@@ -1,9 +1,14 @@
-data "aws_ami" latest_amzn_linux_2 {
+data aws_ami latest_centos_7 {
   most_recent = true
 
   filter {
     name   = "name"
-    values = ["amzn2-ami-hvm-2.0*-x86_64-gp2"]
+    values = ["CentOS Linux 7 x86_64*"]
+  }
+
+  filter {
+    name   = "description"
+    values = ["CentOS Linux 7 x86_64 HVM EBS ENA*"]
   }
 
   filter {
@@ -11,7 +16,12 @@ data "aws_ami" latest_amzn_linux_2 {
     values = ["hvm"]
   }
 
-  owners = ["amazon"]
+  filter {
+    name   = "root-device-type"
+    values = ["ebs"]
+  }
+
+  owners = ["679593333241"]
 }
 
 data "aws_vpc" "default" {

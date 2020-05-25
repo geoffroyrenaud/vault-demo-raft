@@ -1,0 +1,27 @@
+---
+# File: site.yml - Example Vault site playbook
+
+- name: Deploy Vault cluster
+  hosts: tag_Stack_vault_demo_raft
+  any_errors_fatal: true
+  become: true
+  become_user: root
+  remote_user: centos
+  
+  tasks:
+    # - name: "test group"
+    #   command: "echo {{ hostvars }}"
+
+    # - name: "test diff"
+    #   command: "echo {{ difference([inventory_hostname])}}"
+
+  roles:
+    - role: ansible-vault
+      vault_version: 1.4.2
+      vault_tls_disable: true
+      vault_backend: "raft"
+      vault_cluster_name: vault_demo_raft
+      vault_datacenter_name: "dc1"
+      vault_group_name: tag_Stack_vault_demo_raft
+      vault_raft_group_name: tag_Stack_vault_demo_raft
+

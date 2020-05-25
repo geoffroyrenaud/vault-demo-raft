@@ -61,7 +61,7 @@ module "ec2_cluster" {
   name           = var.myname
   instance_count = 3
 
-  ami                    = data.aws_ami.latest_amzn_linux_2.id
+  ami                    = data.aws_ami.latest_centos_7.id
   instance_type          = "t2.micro"
   key_name               = aws_key_pair.vault.key_name
   vpc_security_group_ids = [aws_security_group.vault.id]
@@ -70,5 +70,6 @@ module "ec2_cluster" {
   tags = {
     Terraform   = "true"
     Environment = "dev"
+    Stack       = var.myname
   }
 }
