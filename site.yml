@@ -2,10 +2,17 @@
 # File: site.yml - Example Vault site playbook
 
 - name: Deploy Vault cluster
-  hosts: all
+  hosts: vault_raft_servers
   any_errors_fatal: true
   become: true
   become_user: root
+
+  tasks:
+    # - name: "test group"
+    #   command: "echo {{ hostvars }}"
+
+    # - name: "test diff"
+    #   command: "echo {{ difference([inventory_hostname])}}"
 
   roles:
     - role: ansible-vault
@@ -14,6 +21,6 @@
       vault_backend: "raft"
       vault_cluster_name: "clvagrant"
       vault_datacenter_name: "dc"
-      vault_group_name: "grpvagrant"
-      vault_raft_group_name: "grpraft"
+      vault_group_name: "vault_raft_servers"
+      vault_raft_group_name: "vault_raft_servers"
 
