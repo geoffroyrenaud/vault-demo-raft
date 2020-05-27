@@ -7,6 +7,9 @@ keyed_groups:
   - key: tags.Stack
     prefix: tag_Stack_
     separator: ""
+  - key: tags.AnsibleGrp
+    separator: ""
+
 
 #hostnames:
 #  - private-ip-address

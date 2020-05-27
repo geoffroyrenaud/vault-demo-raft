@@ -22,6 +22,7 @@
       vault_backend: "raft"
       vault_cluster_name: vault_demo_raft
       vault_datacenter_name: "dc1"
-      vault_group_name: tag_Stack_vault_demo_raft
-      vault_raft_group_name: tag_Stack_vault_demo_raft
+      vault_group_name: vault_raft_servers
+      vault_raft_group_name: vault_raft_servers
+      
 

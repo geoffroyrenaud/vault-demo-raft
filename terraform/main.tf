@@ -71,5 +71,6 @@ module "ec2_cluster" {
     Terraform   = "true"
     Environment = "dev"
     Stack       = var.myname
+    AnsibleGrp = "vault_raft_servers"
   }
 }
