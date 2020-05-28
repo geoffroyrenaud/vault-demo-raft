@@ -24,8 +24,9 @@ terraform init
 terraform plan
 terraform apply
 
-terraform output ssh_key > ~/.ssh/vault_demo_raft
-chmod 600 ~/.ssh/vault_demo_raft
+eval $(ssh-agent)
+
+terraform output ssh_key | ssh-agent -
 
 # check the ansible group tag_Stack_vault_demo_raft
 ansible-inventory -i inventory.aws_ec2.yml --graph
