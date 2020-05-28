@@ -37,7 +37,7 @@ resource "aws_security_group" "vault" {
   ingress {
     description = "vault services between vault"
     from_port   = 0
-    to_port     = 0
+    to_port     = 65535
     protocol    = "tcp"
     self        = true
   }

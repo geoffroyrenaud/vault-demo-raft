@@ -2,7 +2,7 @@
 # File: site.yml - Example Vault site playbook
 
 - name: Deploy Vault cluster
-  hosts: tag_Stack_vault_demo_raft
+  hosts: vault_raft_servers
   any_errors_fatal: true
   become: true
   become_user: root
